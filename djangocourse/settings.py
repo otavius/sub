@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-t76ec91g8aw88xavs0x=(3kj+6o!+ve^bb(#hz!yab7t1n@jxz
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["0.0.0.0",]
+ALLOWED_HOSTS = ["0.0.0.0","127.0.0.1"]
 
 
 # Application definition
@@ -49,6 +49,25 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+if DEBUG:
+    INSTALLED_APPS += [
+        "debug_toolbar"
+    ]
+
+    MIDDLEWARE += [
+        "debug_toolbar.middleware.DebugToolbarMiddleware"
+    ]
+
+    import socket 
+    hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
+
+    INTERNAL_IPS = [ip[:-1] + "1" for ip in ips] + ["127.0.0.1"]
+    INTERNAL_IPS += ["172.17.0.1"]
+
+    # DEBUG_TOOLBAR_CONFIG = {
+    #     "SHOW_TOOLBAR_CALLBACK": lambda request: print(request.META),
+    # }
 
 ROOT_URLCONF = 'djangocourse.urls'
 
