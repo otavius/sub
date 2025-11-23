@@ -1,5 +1,6 @@
 import re 
 from django.db import models
+from django.utils.translation import gettext_lazy as _ 
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 
@@ -14,7 +15,7 @@ class UserProfile(AbstractUser):
     pass
 
 class Article(models.Model):
-    title = models.CharField(max_length=100)
+    title = models.CharField( max_length=100)
     content = models.TextField(blank=True, default="")
     word_count = models.IntegerField(blank=True, default="")
     x_post = models.TextField(blank=True, default="")
