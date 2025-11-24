@@ -154,7 +154,7 @@ ACCOUNT_EMAIL_VERIFICATION = "none"
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us, es'
+LANGUAGE_CODE = 'es'
 
 TIME_ZONE = 'UTC'
 
