@@ -1,6 +1,10 @@
 FROM  python:3.13-bullseye
 ENV PYTHONUNBUFFERED=1
 
+RUN apt update 
+RUN apt install gettext -y
+
+
 RUN mkdir /code 
 
 WORKDIR /code 
