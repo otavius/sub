@@ -20,6 +20,14 @@ class UserProfile(AbstractUser):
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
 
+    @property
+    def article_count(self):
+        return self.articles.count()
+    
+    @property
+    def writtern_word(self):
+        return self.articles.aggregate(models.Sum("word_count"))["word_count__sum"] or 0
+
 
 class Article(models.Model):
 
